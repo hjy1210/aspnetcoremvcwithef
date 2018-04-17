@@ -22,3 +22,15 @@ dotnet new mvc -uld --auth Individual -o AspNetCoreTodo
 
 ## Add external packages
 
+## Use a database
+
+TodoController dependent on ITodoService(TodoService).
+TodoService dependent on ApplicationDbContext.
+Both ITodoService(TodoService) and ApplicationDbContext are contigured inConfigureServices method of Startup.
+
+* Connect to a database
+* Update the context
+* Create a migration
+* Create a new service class
+
+
