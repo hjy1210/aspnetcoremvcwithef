@@ -19,3 +19,6 @@ dotnet new mvc -uld --auth Individual -o AspNetCoreTodo
 * Add a service class
 * Use dependency injection
 * Finish the controller
+
+## Add external packages
+
