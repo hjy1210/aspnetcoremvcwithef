@@ -52,10 +52,15 @@ namespace AspNetCoreTodo
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseDatabaseErrorPage();
-
+				// How to correctly seed a DbContext using ASP.NET Core 2.0? #2188
+				// https://github.com/aspnet/Home/issues/2188
+				// Seeding data in asp.net core 2.0 should be in Main method #45
+				// https://github.com/nbarbettini/little-aspnetcore-book/issues/45
+				/////// Following IS NOT good
 				// https://nbarbettini.gitbooks.io/little-asp-net-core-book/content/chapters/security-and-identity/authorization-with-roles.html
-				EnsureRolesAsync(roleManager).Wait();  // 上面的reference說：不能用 await
-				EnsureTestAdminAsync(userManager).Wait(); // 上面的reference說：不能用 await
+				//EnsureRolesAsync(roleManager).Wait();  // 上面的reference說：不能用 await
+				//EnsureTestAdminAsync(userManager).Wait(); // 上面的reference說：不能用 await
+				///////
 			}
 			else
 			{
@@ -74,25 +79,5 @@ namespace AspNetCoreTodo
 			});
 		}
 
-		private static async Task EnsureRolesAsync(RoleManager<IdentityRole> roleManager)
-		{
-			var alreadyExists = await roleManager.RoleExistsAsync(Constants.AdministratorRole);
-
-			if (alreadyExists) return;
-
-			await roleManager.CreateAsync(new IdentityRole(Constants.AdministratorRole));
-		}
-		private static async Task EnsureTestAdminAsync(UserManager<ApplicationUser> userManager)
-		{
-			var testAdmin = await userManager.Users
-				.Where(x => x.UserName == "admin@todo.local")
-				.SingleOrDefaultAsync();
-
-			if (testAdmin != null) return;
-
-			testAdmin = new ApplicationUser { UserName = "admin@todo.local", Email = "admin@todo.local" };
-			await userManager.CreateAsync(testAdmin, "NotSecure123!!");
-			await userManager.AddToRoleAsync(testAdmin, Constants.AdministratorRole);
-		}
 	}
 }

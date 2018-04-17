@@ -49,3 +49,8 @@ Both ITodoService(TodoService) and ApplicationDbContext are contigured inConfigu
 
 Implement testAdmin(admin@todo.local) as a user with Administrator role.
 
+注意：到此為止，若到別的機器執行或是將原來的資料庫移除，重新Update-Database 的時候會失敗。
+
+[How to correctly seed a DbContext using ASP.NET Core 2.0? #2188](https://github.com/aspnet/Home/issues/2188) 提到：Seeding 應該放在 Program.cs 裡面而非 Start.cs。
+所以新版的[Authorization with roles](https://github.com/nbarbettini/little-aspnetcore-book/blob/eadacd44856254720e1e817eff3d2d829514e432/chapters/security-and-identity/authorization-with-roles.md)已經改進。
+
