@@ -40,3 +40,12 @@ Both ITodoService(TodoService) and ApplicationDbContext are contigured inConfigu
 
 **function markCompleted(checkbox) in site.js do not handle error correctly.**
 
+## Security and identity
+
+* Add Facebook login (not try yet!)
+* Require authentication
+* Using identity in the application
+* Authorization with roles
+
+Implement testAdmin(admin@todo.local) as a user with Administrator role.
+
