@@ -33,4 +33,10 @@ Both ITodoService(TodoService) and ApplicationDbContext are contigured inConfigu
 * Create a migration
 * Create a new service class
 
+## Add more features
+
+* Add new todo items
+* Complete items with a checkbox
+
+**function markCompleted(checkbox) in site.js do not handle error correctly.**
 
