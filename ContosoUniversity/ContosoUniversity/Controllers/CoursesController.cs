@@ -10,43 +10,43 @@ using ContosoUniversity.Models;
 
 namespace ContosoUniversity.Controllers
 {
-    public class CoursesController : Controller
-    {
-        private readonly SchoolContext _context;
+	public class CoursesController : Controller
+	{
+		private readonly SchoolContext _context;
 
-        public CoursesController(SchoolContext context)
-        {
-            _context = context;
-        }
+		public CoursesController(SchoolContext context)
+		{
+			_context = context;
+		}
 
-        // GET: Courses
-        public async Task<IActionResult> Index()
-        {
-            var courses = _context.Courses
+		// GET: Courses
+		public async Task<IActionResult> Index()
+		{
+			var courses = _context.Courses
 				.Include(c => c.Department)
 				.AsNoTracking();
-            return View(await courses.ToListAsync());
-        }
+			return View(await courses.ToListAsync());
+		}
 
-        // GET: Courses/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: Courses/Details/5
+		public async Task<IActionResult> Details(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var course = await _context.Courses
-                .Include(c => c.Department)
+			var course = await _context.Courses
+				.Include(c => c.Department)
 				.AsNoTracking()
-                .SingleOrDefaultAsync(m => m.CourseID == id);
-            if (course == null)
-            {
-                return NotFound();
-            }
+				.SingleOrDefaultAsync(m => m.CourseID == id);
+			if (course == null)
+			{
+				return NotFound();
+			}
 
-            return View(course);
-        }
+			return View(course);
+		}
 
 		// GET: Courses/Create
 		public IActionResult Create()
@@ -96,8 +96,15 @@ namespace ContosoUniversity.Controllers
 			var courseToUpdate = await _context.Courses
 				.SingleOrDefaultAsync(c => c.CourseID == id);
 
+			var provider = new CoursePrivider
+			{
+				Credits = this.Request.Form["Credits"],
+				DepartmentID = this.Request.Form["DepartmentID"],
+				Title = this.Request.Form["Title"]
+			};
+
 			if (await TryUpdateModelAsync<Course>(courseToUpdate,
-				"",
+				"", provider,
 				c => c.Credits, c => c.DepartmentID, c => c.Title))
 			{
 				try
@@ -125,38 +132,38 @@ namespace ContosoUniversity.Controllers
 		}
 		// GET: Courses/Delete/5
 		public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var course = await _context.Courses
-                .Include(c => c.Department)
+			var course = await _context.Courses
+				.Include(c => c.Department)
 				.AsNoTracking()
-                .SingleOrDefaultAsync(m => m.CourseID == id);
-            if (course == null)
-            {
-                return NotFound();
-            }
+				.SingleOrDefaultAsync(m => m.CourseID == id);
+			if (course == null)
+			{
+				return NotFound();
+			}
 
-            return View(course);
-        }
+			return View(course);
+		}
 
-        // POST: Courses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var course = await _context.Courses.SingleOrDefaultAsync(m => m.CourseID == id);
-            _context.Courses.Remove(course);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+		// POST: Courses/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> DeleteConfirmed(int id)
+		{
+			var course = await _context.Courses.SingleOrDefaultAsync(m => m.CourseID == id);
+			_context.Courses.Remove(course);
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
+		}
 
-        private bool CourseExists(int id)
-        {
-            return _context.Courses.Any(e => e.CourseID == id);
-        }
-    }
+		private bool CourseExists(int id)
+		{
+			return _context.Courses.Any(e => e.CourseID == id);
+		}
+	}
 }
