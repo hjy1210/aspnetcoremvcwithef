@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreTodo", "AspNetCoreTodo.csproj", "{33D812BE-48E9-4D73-9C50-2AB5D48A6F2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreTodo.UnitTests", "..\AspNetCoreTodo.UnitTests\AspNetCoreTodo.UnitTests.csproj", "{BB9054ED-EC43-4AE9-9D31-48D54001F6C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreTodo.UnitTests", "..\AspNetCoreTodo.UnitTests\AspNetCoreTodo.UnitTests.csproj", "{BB9054ED-EC43-4AE9-9D31-48D54001F6C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreTodo.IntegrationTests", "..\AspNetCoreTodo.IntegrationTests\AspNetCoreTodo.IntegrationTests.csproj", "{928DA6A9-4B23-4B1B-964A-05F9B523AE23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreTodo.IntegrationTests", "..\AspNetCoreTodo.IntegrationTests\AspNetCoreTodo.IntegrationTests.csproj", "{928DA6A9-4B23-4B1B-964A-05F9B523AE23}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreTodo.SqliteUnitTests", "..\AspNetCoreTodo.SqliteUnitTests\AspNetCoreTodo.SqliteUnitTests.csproj", "{2E49311B-0151-4766-913B-441D93F4AF15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{928DA6A9-4B23-4B1B-964A-05F9B523AE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{928DA6A9-4B23-4B1B-964A-05F9B523AE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{928DA6A9-4B23-4B1B-964A-05F9B523AE23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E49311B-0151-4766-913B-441D93F4AF15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E49311B-0151-4766-913B-441D93F4AF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E49311B-0151-4766-913B-441D93F4AF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E49311B-0151-4766-913B-441D93F4AF15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
